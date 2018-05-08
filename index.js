@@ -12,7 +12,6 @@ const searchID = process.env.SEARCH_ID;
 
 app.listen(port);
 console.log(`Now listening on port ${port}`);
-app.use(express.static(path.join(__dirname, "static")));
 
 app.get('/latest', function(req, res){
   mongo.connect(url, function(err, client){
