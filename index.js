@@ -41,6 +41,7 @@ app.get('/imagesearch/:search', function(req, res){
     });
     results.on('end', function(data){
       var query = JSON.parse(str);
+      console.log(query);
       if(query.error){
         res.send([]);
       }
