@@ -8,6 +8,7 @@ const database = url.split(/(mongodb:\/\/[\w\W]*\/)/).filter(Boolean)[1] || 'ima
 const port = process.env.PORT || 5000;
 const key = process.env.API_KEY;
 const searchID = process.env.SEARCH_ID;
+console.log(searchID);
 
 app.listen(port);
 console.log(`Now listening on port ${port}`);
