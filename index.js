@@ -40,21 +40,23 @@ app.get('/imagesearch/:search', function(req, res){
       str += data;
     });
     results.on('end', function(data){
-      var query = JSON.parse(str);
-      console.log(query);
-      if(query.error){
-        res.send([]);
-      }
-      else {
-        for(var each in query.items){
-          final.push({
-            result: query.items[each].title,
-            image: query.items[each].link,
-            page: query.items[each].image.contextLink
-          });
+      try {
+        console.log(str);
+        var query = JSON.parse(str);
+        if(query.error){
+          res.send([]);
         }
-        res.send(final);
-      }
+        else {
+          for(var each in query.items){
+            final.push({
+              result: query.items[each].title,
+              image: query.items[each].link,
+              page: query.items[each].image.contextLink
+            });
+          }
+          res.send(final);
+        }
+      } catch(error) {res.send([]);}
     });
   });
 });
